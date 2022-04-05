@@ -5,27 +5,49 @@ class Character{
     protected int $health;
     protected int $rage;
 
-    // __construct
-    function __construct(int $health, int $rage) {
-        $this->health = $health;
-        $this->rage = $rage;
-    }
-
-    // setHealth
-    public function setHealth($health){
+    /**
+     * setHealth
+     * @param int $health
+     * 
+     * @return void
+     */
+    public function setHealth(int $health):void{
         $this -> health = $health;
     }
-    // getHealth
-    public function getHealth(){
+
+    /**
+     * getHealth
+     * @return int
+     */
+    public function getHealth():int{
         return $this -> health;
     }
 
-    // setRage
-    public function setRage($rage){
+    /**
+     * setRage
+     * @param int $rage
+     * 
+     * @return void
+     */
+    public function setRage(int $rage):void{
         $this -> rage = $rage;
     }
-    // getRage
-    public function getRage(){
+
+    /**
+     * getRage
+     * @return int
+     */
+    public function getRage():int{
         return $this -> rage;
+    }
+
+    /**
+     * __construct
+     * @param int $health
+     * @param int $rage
+     */
+    function __construct(int $health, int $rage){
+        $this -> setHealth($health);
+        $this -> setRage($rage);
     }
 }
