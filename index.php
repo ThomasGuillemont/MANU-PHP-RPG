@@ -5,7 +5,7 @@ require_once(dirname(__FILE__).'/Orc.php');
 // Orc
 $orc = new Orc(700, 'Epée en bois', 100, 'Armure en paille', 20, 500, 0);
 // Hero
-$hero = new Hero('Epée de MJ', 250, 'Armure de MJ', 600, 2000, 0);
+$hero = new Hero('Epée de MJ', 260, 'Armure de MJ', 600, 2000, 0);
 
 // init var
 $resultSentence = '';
