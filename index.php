@@ -3,9 +3,24 @@ require_once(dirname(__FILE__).'/Character.php');
 require_once(dirname(__FILE__).'/Hero.php');
 require_once(dirname(__FILE__).'/Orc.php');
 
-if ($hero > 0) {
-    $hero -> attacked(15);
+$resultSentence = '';
+$sentence = '';
+while ($hero -> getHealth() > 0) {
+    if ($hero -> getRage() >= 100) {
+        $sentence .= '<div class="col-12 fw-bold">Hero lui rend un coup et lui inflige '.$hero -> superAttack().'</div>';
+        $hero ->setRage(0);
+    }
+
+    $hero -> attacked($orc -> attack());
+    $hero -> rageUp(30);
+
+    $sentence .= '<div class="col-12">L\'orc a infligé '.$orc -> attack().' dégats</div>';
 }
+
+if ($hero -> getHealth() <= 0) {
+    $resultSentence .= '<div class="col-12 fw-bold fs-3 mt-3 mb-3">Tu est mort ! Pas trop déçu?</div>';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -26,9 +41,20 @@ if ($hero > 0) {
 </head>
 
 <body>
+    <header class="p-1 header-color">
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="row bg-header">
+                <div class="col-12 fw-bold fs-5">
+                    <span>&copy <a target=" _blank" href="https://github.com/ThomasGuillemont">Thomas Guillemont</a> -
+                    <?= date("Y") ?></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <main>
         <div class="container-fluid mt-5">
-            <div class="row">
+            <div class="row text-center">
                 <div class="col-6 d-flex justify-content-center mb-3">
                     <img class="character" src="./assets/img/hero.png" alt="hero">
                 </div>
@@ -41,14 +67,16 @@ if ($hero > 0) {
                 <div class="col-6 text-center">
                     <?= $orc ?? '' ?>
                 </div>
+                <?= $resultSentence ?? '' ?>
+                <?= $sentence ?? '' ?>
             </div>
         </div>
     </main>
 
-    <footer class="p-1 fixed-bottom">
+    <footer class="p-1 footer-color">
         <div class="container-fluid d-flex justify-content-center">
-            <div class="row">
-                <div class="col-12">
+            <div class="row bg-footer">
+                <div class="col-12 fw-bold fs-5">
                     <span>&copy <a target=" _blank" href="https://github.com/ThomasGuillemont">Thomas Guillemont</a> -
                     <?= date("Y") ?></span>
                 </div>

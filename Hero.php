@@ -102,23 +102,28 @@ class Hero extends Character{
     // Create Hero
     public function __toString(){
         return '
-            <div class="fw-bold">Le Hero vient de voir le jour,</div>
+            <div class="fw-bold">Le Hero vient de voir le jour</div>
             <div>'.$this -> health.' PV / '.$this -> rage.' rage</div>
             <div>'.$this -> weapon.' avec '.$this -> weaponDamage.' de dégats</div>
-            <div>'.$this -> shield.' avec '.$this -> shieldValue.' de défense.</div>
+            <div>'.$this -> shield.' avec '.$this -> shieldValue.' de défense</div>
         ';
     }
 
     // Hero damage receive
     public function attacked(int $damage):void{
-        $this -> health -= ($damage - $this -> shieldValue);
+        $this -> setHealth($damage - $this -> getShieldValue());
     }
 
     // Hero rage up
-    public function rageUp(){
-        $this -> rage += 30;
+    public function rageUp(int $rage):void{
+        $this -> setRage($this -> rage += $rage);
+    }
+
+    // Hero attack
+    public function superAttack(){
+        return $this -> getWeaponDamage();
     }
 }
 
 // Hero
-$hero = new Hero('L\'épée d\'Ophile', 10, 'Armure de débutant', 50, 100, 0);
+$hero = new Hero('Epée de débutant', 250, 'Armure de débutant', 600, 2000, 0);

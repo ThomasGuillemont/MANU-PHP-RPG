@@ -33,19 +33,22 @@ class Orc extends Character{
         $this -> setDamage($damage);
 
         // Character stats
-        $this -> setHealth($health);
-        $this -> setRage($rage);
         parent::__construct($health, $rage);
     }
 
     // Create Orc
     public function __toString(){
         return '
-            <div class="fw-bold">Un Orc plutot gros arrive,</div>
-            <div> '.$this -> damage.' de valeur d\'attaque, ça cogne !<div>
+            <div class="fw-bold">Un Orc plutot gros arrive</div>
+            <div>Entre 600 et 800 de valeur d\'attaque, ça cogne !</div>
         ';
+    }
+
+    // Orc damage
+    public function attack(){
+        return rand(600, 800);
     }
 }
 
 // Orc
-$orc = new Orc(15, 100, 0);
+$orc = new Orc(700, 500, 0);

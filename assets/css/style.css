@@ -1,3 +1,23 @@
 .character{
     height: 3em;
 }
+
+.footer-color{
+    background-image: url("../img/floor.png");
+    background-size: auto;
+}
+
+.bg-footer {
+    background-color: #77514c;
+    border: 2px solid #514047;
+}
+
+.header-color{
+    background-image: url("../img/wall.png");
+    background-size: auto;
+}
+
+.bg-header {
+    background-color: #77514c;
+    border: 2px solid #514047;
+}
